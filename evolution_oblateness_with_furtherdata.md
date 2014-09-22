@@ -39,12 +39,12 @@ threshold ($dist_{th}$) impossed to the data to be fitted.
     plt.title('Dependency of the reduced $\chi^2$ with the fitted data')
     plt.xlabel('$dist_{th}$ for the data (kpc)', fontsize='x-large')
     plt.ylabel('$reduced\, \chi^2$', fontsize='x-large')
-    plt.plot(distThr,red_chi2,'go',ms=8)
+    plt.plot(distThr,red_chi2,'ro',ms=8)
 
 
 
 
-    [<matplotlib.lines.Line2D at 0x6c2e550>]
+    [<matplotlib.lines.Line2D at 0x582ab50>]
 
 
 
@@ -52,10 +52,33 @@ threshold ($dist_{th}$) impossed to the data to be fitted.
 ![png](evolution_oblateness_with_furtherdata_files/evolution_oblateness_with_furtherdata_9_1.png)
 
 
-We can see that the dependency is approximately linear out to 75 kpc but, for
-the final fit out to 100kpc, we can see an exponential grow in the reduced
-$\chi^2$. This means a significant worsening of the fit that increases with the
-complexity of the data.
+We can see that the dependency shows approximately a logarithmic growth out to
+45 kpc, there is a positive jump in the 45-55 kpc range, and from there onwards
+the relation is approximately linear (or maybe quadratic) out to 100kpc. This
+means a significant worsening of the fit, having a reduced $\chi^2$ that
+increases with the complexity of the data.
+
+# Evolution of the power law index (n):
+
+
+    plt.figure(num=1)
+    plt.title('Dependency of the oblateness with the fitted data')
+    plt.tick_params(labelsize='x-large')
+    plt.xlabel('$distance_{th}$ for the data (kpc)', fontsize='x-large')
+    plt.ylabel('power law index, $n$', fontsize='x-large')
+    plt.errorbar(distThr,n, yerr=err_n, 
+                 color='b',ecolor='k',fmt='v',ms=8,label='power law index')
+
+
+
+
+    <Container object of 3 artists>
+
+
+
+
+![png](evolution_oblateness_with_furtherdata_files/evolution_oblateness_with_furtherdata_12_1.png)
+
 
 # Evolution of the oblateness:
 
@@ -63,8 +86,8 @@ complexity of the data.
 with the data available to be fitted:
 
 
-    plt.figure(num=1)
-    plt.title('Dependency of the oblateness with the fitted data')
+    plt.figure(num=2)
+    plt.title('Dependency of the power law index with the fitted data')
     plt.tick_params(labelsize='x-large')
     plt.xlabel('$distance_{th}$ for the data (kpc)', fontsize='x-large')
     plt.ylabel('polar axis ratio, $q=c/a$', fontsize='x-large')
@@ -79,18 +102,18 @@ with the data available to be fitted:
 
 
 
-![png](evolution_oblateness_with_furtherdata_files/evolution_oblateness_with_furtherdata_13_1.png)
+![png](evolution_oblateness_with_furtherdata_files/evolution_oblateness_with_furtherdata_15_1.png)
 
 
 * And the dependency of the disk axes ratio $w$ to the fitted data:
 
 
-    plt.figure(num=2)
+    plt.figure(num=3)
     plt.title('Dependency of the axis ratio with the fitted data')
     plt.xlabel('$distance_{th}$ for data (kpc)', fontsize='x-large')
     plt.ylabel('disk axes ratio, $w=b/a$', fontsize='x-large')
     plt.errorbar(distThr,w, yerr=err_w, 
-                 color='r',ecolor='k',fmt='s',ms=8,label='axes ratio')
+                 color='b',ecolor='k',fmt='o',ms=8,label='axes ratio')
 
 
 
@@ -100,14 +123,14 @@ with the data available to be fitted:
 
 
 
-![png](evolution_oblateness_with_furtherdata_files/evolution_oblateness_with_furtherdata_15_1.png)
+![png](evolution_oblateness_with_furtherdata_files/evolution_oblateness_with_furtherdata_17_1.png)
 
 
 Both trends look very similar, as expected from the covariance matrices in each
 fit. So lets plot both parameters against each other:
 
 
-    plt.figure(num=3)
+    plt.figure(num=4)
     plt.title('Disk axes ratio vs polar axes ratio (b/c)')
     plt.xlabel('polar axis ratio, $q=c/a$', fontsize='x-large')
     plt.ylabel('disk axis ratio,$ w=b/a$', fontsize='x-large')
@@ -116,18 +139,18 @@ fit. So lets plot both parameters against each other:
 
 
 
-    [<matplotlib.lines.Line2D at 0x8fa33d0>]
+    [<matplotlib.lines.Line2D at 0x53f0fd0>]
 
 
 
 
-![png](evolution_oblateness_with_furtherdata_files/evolution_oblateness_with_furtherdata_17_1.png)
+![png](evolution_oblateness_with_furtherdata_files/evolution_oblateness_with_furtherdata_19_1.png)
 
 
-Conclusion 1: We can see that the relation between $q$ and $w$ is quasi linear,
-being both parameters strongly correlated. This means that with the current data
-and fitting algorithm we can not expect to reduce the oblateness without
-reducing the disk axis ratio proportionally.
+Conclusion 1: We can see that the relation between $q$ and $w$ is linear, being
+both parameters strongly correlated. This means that with the current data and
+fitting algorithm we can not expect to reduce the oblateness without reducing
+the disk axis ratio proportionally.
 
 Conclusion2: Since the reduced $\chi^2$ is also proportional to the $dist_{th}$,
 this indicates that the prefered fit happens for the smaller data set, the one
@@ -144,7 +167,9 @@ mathematical artifact of the fitting procedure.
 Conclusion 4: If the gradient is indeed a true feature, the change of trend in
 the $q$ and $w$ values (the change in the gradient) at around 30-35 kpc, could
 be indicating the famous break in the power law (currently accepted at 26-28
-kpc).
+kpc). The fact that the change in the trend of the reduced $\chi^2$ happens at a
+different distance threshold (45-55 kpc) indicates that the change in the $q$
+gradient is not directly related.
 
 Conclusion 5: The gradient is not enough to justify the difference between our
 $q$ values and those in the literature ($0.7<q<0.9$). This means that either our
@@ -159,6 +184,9 @@ different from the values in the literature.
 * Fit models to halo stars without the additional g-i constraint (previous works
 simply select in $0.2<g-r<0.3$), and see if the difference in the tracers is the
 reason for the difference in $q$ and $w$.
+
+Both tests have been addressed independently of this notebook. We've found the
+following results:
 
 
     
