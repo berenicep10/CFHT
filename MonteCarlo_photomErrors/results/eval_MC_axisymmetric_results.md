@@ -288,4 +288,41 @@ $E_{tot}= \sqrt{(E_{stat})^2+(E_{sist})^2}=
 
 
 
+    plt.figure(num=7, figsize=(10,10))
+    plt.tick_params(labelsize=14) 
     
+    plt.subplot(211)
+    plt.xlabel('$chi^2_{red}$', fontsize=14)
+    plt.ylabel('power index, $n$', fontsize=14)
+    
+    plt.plot(chi2_red,n,'.')
+    plt.plot(np.median(chi2_red),np.median(n),'.',color='green',ms=8,mew=2)
+    plt.errorbar(np.median(chi2_red),np.median(n),xerr=np.std(chi2_red),yerr=np.std(n), 
+             color='green',ms=12,mew=2, label='median')
+    plt.plot(or_red_chi2,or_n, '.',color='magenta',ms=8,mew=2)
+    plt.errorbar(or_red_chi2,or_n,yerr=or_Eq, 
+                 color='magenta',ms=12,mew=2, label='original')
+    
+    plt.legend(fancybox=True,bbox_to_anchor=(1.05, 1), numpoints=1,loc=2)#, borderaxespad=0.)
+    #plt.legend(fancybox=True, loc='upper right', ncol=1, numpoints=1) # prop=fontP, 
+    
+    plt.subplot(212)
+    plt.xlabel('$chi^2_{red}$', fontsize=14)
+    plt.ylabel('oblateness, $q$', fontsize=14)
+    
+    plt.plot(chi2_red,q,'.')
+    plt.plot(np.median(chi2_red),np.median(q),'.',color='green',ms=8,mew=2)
+    plt.errorbar(np.median(chi2_red),np.median(q),xerr=np.std(chi2_red),yerr=np.std(q), 
+             color='green',ms=12,mew=2, label='median')
+    plt.plot(or_red_chi2,or_q, '.',color='magenta',ms=8,mew=2)
+    plt.errorbar(or_red_chi2,or_q,yerr=or_Eq, 
+                 color='magenta',ms=12,mew=2, label='original')
+    
+    plt.legend(fancybox=True,bbox_to_anchor=(1.05, 1), numpoints=1,loc=2)#, borderaxespad=0.)
+    #plt.legend(fancybox=True, loc='upper right', ncol=1, numpoints=1) # prop=fontP,
+    
+    plt.show()
+
+
+![png](eval_MC_axisymmetric_results_files/eval_MC_axisymmetric_results_29_0.png)
+
