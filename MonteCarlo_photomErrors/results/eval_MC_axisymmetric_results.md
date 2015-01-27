@@ -38,7 +38,7 @@
 * Results from the best fits to the data in the paper:
 
 
-    or_dens0,or_Edens0 = 0.0013,0.0004
+    or_dens0,or_Edens0 = 0.014,0.004
     or_n,or_En = -4.28, 0.06
     or_q,or_Eq = 0.61,0.04
     or_red_chi2 = 1.9
@@ -68,7 +68,7 @@
     dens0= 0.0091 +/- 0.0024
     
     Original result from paper:
-    dens0= 0.0013 +/- 0.0004
+    dens0= 0.014 +/- 0.004
 
 
 
@@ -326,3 +326,6 @@ $E_{tot}= \sqrt{(E_{stat})^2+(E_{sist})^2}=
 
 ![png](eval_MC_axisymmetric_results_files/eval_MC_axisymmetric_results_29_0.png)
 
+
+
+    
